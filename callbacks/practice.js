@@ -37,7 +37,9 @@ first(names, function(firstName){
   return firstName;
 });
 // Do not edit the code above.
-
+function first (arr, cb){
+  cb(arr[0])
+}
 
 
 ////////// PROBLEM 2 //////////
@@ -56,6 +58,9 @@ last(names, function(lastName){
 });
 // Do not edit the code above.
 
+function last (arr, cb){
+  cb(arr[arr.length-1])
+}
 
 
 ////////// PROBLEM 3 //////////
@@ -72,7 +77,9 @@ multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
 });
 // Do not edit the code above.
-
+function multiply(num1, num2, cb){
+  cb(num1*num2)
+}
 
 
 ////////// PROBLEM 4 //////////
@@ -95,7 +102,13 @@ contains(names, 'Colt', function(result){
   }
 });
 // Do not edit the code above.
-
+function contains(arr, name, cb){
+  if (arr.includes(name)){
+    cb(true)
+  }else{
+    cb(false)
+  }
+}
 
 
 ////////// PROBLEM 5 //////////
@@ -113,7 +126,16 @@ uniq(names, function(uniqArr){
 });
 // Do not edit the code above.
 
+function uniq(arr, cb){
+  singleArray=[];
+  for (let i=0; i< arr.length;i++){
+    if(!singleArray.includes(arr[i])){
+      singleArray.push(arr[i])
+    }
+  }
+  cb(singleArray)
 
+}
 
 ////////// PROBLEM 6 //////////
 
@@ -129,7 +151,11 @@ each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
 // Do not edit the code above.
-
+function each(arr, cb){
+  for(let i=0; i<arr.length; i++){
+    cb(arr[i], i)
+  }
+}
 
 
 ////////// PROBLEM 7 //////////
@@ -167,3 +193,11 @@ getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
 // Do not edit the code above.
+
+function getUserById(arr, id, cb){
+  for (let i=0; i<arr.length;i++){
+    if(arr[i].id===id){
+      cb(arr[i])
+    }
+  }
+}
